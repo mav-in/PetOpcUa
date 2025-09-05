@@ -1,0 +1,84 @@
+{
+  "version": "v0.1",
+  "results": [
+    {
+      "endpointUrl": "opc.tcp://demo.opcua.local:4840",
+      "readAt": "2025-09-04T10:25:14.000Z",
+      "results": "",
+      "statusCode": "Good",
+      "sourceTimestamp": "2025-09-04T10:25:13.836Z",
+      "serverTimestamp": "2025-09-04T10:25:13.876Z"
+    },
+    {
+      "nodeId": "ns=2;s=Devices/Mixer1/Temperature",
+      "displayName": "Mixer1.Temperature",
+      "dataType": "Double",
+      "dataTypeId": "ns=0;i=11",
+      "value": 68.2,
+      "statusCode": "Good",
+      "sourceTimestamp": "2025-09-04T10:25:13.900Z",
+      "serverTimestamp": "2025-09-04T10:25:13.905Z"
+    },
+    {
+      "nodeId": "ns=2;s=Devices/Tank1/Level",
+      "displayName": "Tank1.Level",
+      "dataType": "Double",
+      "dataTypeId": "ns=0;i=11",
+      "value": 78.2,
+      "statusCode": "UncertainLastUsableValue",
+      "sourceTimestamp": "2025-09-04T10:25:13.910Z",
+      "serverTimestamp": "2025-09-04T10:25:13.915Z"
+    },
+    {
+      "nodeId": "ns=2;s=Devices/Tank1/TrendLevel",
+      "displayName": "Tank1.TrendLevel",
+      "dataType": "Double",
+      "dataTypeId": "ns=0;i=11",
+      "arrayType": "Array",
+      "arrayDimensions": "",
+      "value": "",
+      "statusCode": "Good",
+      "sourceTimestamp": "2025-09-04T10:25:13.920Z",
+      "serverTimestamp": "2025-09-04T10:25:13.925Z"
+    },
+    {
+      "nodeId": "ns=2;s=Devices/Motor1/StartTime",
+      "displayName": "Motor1.StartTime",
+      "dataType": "DateTime",
+      "dataTypeId": "ns=0;i=13",
+      "value": "2025-09-04T08:40:00.000Z",
+      "statusCode": "Good",
+      "sourceTimestamp": "2025-09-04T10:25:13.930Z",
+      "serverTimestamp": "2025-09-04T10:25:13.935Z"
+    },
+    {
+      "nodeId": "ns=2;s=Batch/Id",
+      "displayName": "Batch.Id",
+      "dataType": "String",
+      "dataTypeId": "ns=0;i=12",
+      "value": "BCH-2025-09-04-0012",
+      "statusCode": "Good",
+      "sourceTimestamp": "2025-09-04T10:25:13.940Z",
+      "serverTimestamp": "2025-09-04T10:25:13.945Z"
+    },
+    {
+      "nodeId": "ns=2;s=Devices/PLC/ConnectionOk",
+      "displayName": "PLC.ConnectionOk",
+      "dataType": "Boolean",
+      "dataTypeId": "ns=0;i=1",
+      "value": false,
+      "statusCode": "BadOutOfService",
+      "sourceTimestamp": "2025-09-04T10:25:13.950Z",
+      "serverTimestamp": "2025-09-04T10:25:13.955Z"
+    },
+    {
+      "nodeId": "ns=2;s=Devices/NoSuchTag",
+      "displayName": "NoSuchTag",
+      "dataType": null,
+      "value": null,
+      "statusCode": "BadNodeIdUnknown",
+      "sourceTimestamp": null,
+      "serverTimestamp": "2025-09-04T10:25:13.960Z"
+    }
+  ]
+}
