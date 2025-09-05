@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  opcapi:
+    image: ${DOCKER_REGISTRY-}opcapi
+    build:
+      context: .
+      dockerfile: OpcApi/Dockerfile
+    ports:
+      - "8080:8080"
