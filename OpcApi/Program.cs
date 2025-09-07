@@ -1,4 +1,5 @@
 using OpcApi.DependencyInjection;
+using OpcApi.Extension;
 using OpcApi.Services.MockOpc;
 using OpcDomain;
 using static OpcDomain.Constants;
@@ -48,6 +49,49 @@ app.MapGet("/api/opc/tags", async (string? status, IOpcDataProvider provider, Ca
         .Where(w => Quality.GroupOf(w.StatusCode) == g);
 
     return Results.Ok(filtered);
+});
+
+app.MapGet("/api/opc/summary", async (IOpcDataProvider provider, CancellationToken ct) =>
+{
+    var data = await provider.GetAsync(ct);
+
+    var groups = data.Results
+        .GroupBy(t => Quality.GroupOf(t.StatusCode))
+        .ToDictionary(g => g.Key.ToString(), g => g.Count());
+
+    var types = data.Results
+        .Select(t => t.DataType ?? "Unknown")
+        .Distinct()
+        .OrderBy(x => x);
+
+    var allSrc = data.Results
+        .Select(t => t.SourceTimestamp)
+        .Where(d => d.HasValue)
+        .Select(d => d!.Value)
+        .ToList();
+
+    var allSrv = data.Results
+        .Select(t => t.ServerTimestamp)
+        .Where(d => d.HasValue)
+        .Select(d => d!.Value)
+        .ToList();
+
+    var (srcMin, srcMax) = allSrc.MinMaxSinglePass();
+    var (srvMin, srvMax) = allSrv.MinMaxSinglePass();
+
+    var summary = new
+    {
+        counts = new
+        {
+            Good = groups.GetValueOrDefault(QualityGroup.Good.ToString(), 0),
+            Uncertain = groups.GetValueOrDefault(QualityGroup.Uncertain.ToString(), 0),
+            Bad = groups.GetValueOrDefault(QualityGroup.Bad.ToString(), 0)
+        },
+        dataTypes = types,
+        sourceTimestamp = new { min = srcMin, max = srcMax },
+        serverTimestamp = new { min = srvMin, max = srvMax }
+};
+    return Results.Ok(summary);
 });
 
 app.Run();
