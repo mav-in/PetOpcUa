@@ -25,6 +25,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.MapGet("/api/opc/last-read", (IOpcDataProvider provider, CancellationToken ct) =>
+{
+    return provider.GetAsync(ct);
+});
 
 
 app.Run();
