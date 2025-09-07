@@ -19,4 +19,4 @@ jobs:
       - name: Test
         run: dotnet test Opc.sln -c Release --no-build
       - name: Build Docker image
-        run: docker build -t opc-api:local -f src/OpcApi/Dockerfile .
+        run: docker build -t opc-api:local -f ./OpcApi/Dockerfile .

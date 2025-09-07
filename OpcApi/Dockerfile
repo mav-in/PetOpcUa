@@ -21,7 +21,7 @@ RUN dotnet publish "./OpcApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-COPY data/opc_mock.json /app/data/opc_mock.json
+COPY ./OpcApi/Data/opc_mock.json /app/data/opc_mock.json
 ENV OPC_MOCK_PATH=/app/data/opc_mock.json
 ENV ASPNETCORE_URLS=http://0.0.0.0:8080
 ENTRYPOINT ["dotnet", "OpcApi.dll"]
