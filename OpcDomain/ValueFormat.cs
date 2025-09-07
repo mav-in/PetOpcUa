@@ -11,6 +11,11 @@ public static class ValueFormat
 
     public static TimeSpan? AgeUtc(OpcTag tag, DateTime nowUtc)
     {
-        throw new NotImplementedException();
+        if (tag.ServerTimestamp is null)
+        {
+            return null;
+        }
+
+        return nowUtc - tag.ServerTimestamp.Value;
     }
 }
