@@ -41,7 +41,7 @@ public class DisplayTests
         
         var (display, dt) = ValueFormat.ToDisplay(tag);
         
-        display.Should().Be("—");
+        display.Should().Be(Constants.NoSuchTag);
 
         dt.Should().BeNull();
     }
