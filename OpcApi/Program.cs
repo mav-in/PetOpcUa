@@ -30,5 +30,24 @@ app.MapGet("/api/opc/last-read", (IOpcDataProvider provider, CancellationToken c
     return provider.GetAsync(ct);
 });
 
+app.MapGet("/api/opc/tags", async (string? status, IOpcDataProvider provider, CancellationToken ct) =>
+{
+    var data = await provider.GetAsync(ct);
+
+    if (string.IsNullOrWhiteSpace(status))
+    {
+        return Results.Ok(data.Results);
+    }
+
+    if (!Enum.TryParse<QualityGroup>(status, true, out var g))
+    {
+        return Results.BadRequest("Wrong status!");
+    }
+    
+    var filtered = data.Results
+        .Where(w => Quality.GroupOf(w.StatusCode) == g);
+
+    return Results.Ok(filtered);
+});
 
 app.Run();
