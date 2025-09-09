@@ -1,0 +1,18 @@
+﻿using System.Windows.Controls;
+
+namespace OpcClient.Views
+{
+    /// <summary>
+    /// Interaction logic for SummaryView.xaml
+    /// </summary>
+    public partial class SummaryView : UserControl
+    {
+        public SummaryView()
+        {
+            InitializeComponent();
+#if DEBUG
+            System.Diagnostics.Debug.WriteLine($"SummaryView DataContext (ctor): {this.DataContext}");
+#endif
+        }
+    }
+}

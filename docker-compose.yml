@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  opcapi:
+    image: ${DOCKER_REGISTRY-}opcapi
+    build:
+      context: .
+      dockerfile: OpcApi/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
