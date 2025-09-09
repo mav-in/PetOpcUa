@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="OpcClient.Views.SummaryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0">
+            <Button Content="Refresh"
+                    Command="{Binding DataContext.SummaryVM.RefreshCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    Width="60"
+                    Height="20"
+                    Margin="0,0,5,0"
+                    HorizontalAlignment="Left"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1">
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,10,0">
+                    <TextBlock Text="Good: "/>
+                    <TextBlock Text="{Binding Summary.Counts.Good}" FontWeight="Bold" Margin="0,0,10,0"/>
+                    <TextBlock Text="Uncertain: "/>
+                    <TextBlock Text="{Binding Summary.Counts.Uncertain}" FontWeight="Bold" Margin="0,0,10,0"/>
+                    <TextBlock Text="Bad: "/>
+                    <TextBlock Text="{Binding Summary.Counts.Bad}" FontWeight="Bold" Margin="0,0,10,0"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,5,0">
+                    <TextBlock Text="Source ts: "/>
+                    <TextBlock Text="{Binding Summary.SourceTimestamp.Min}" FontWeight="Bold" Margin="0,0,5,0"/>
+                    <TextBlock Text=".."/>
+                    <TextBlock Text="{Binding Summary.SourceTimestamp.Max}" FontWeight="Bold" Margin="5,0,5,0"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,0,5,0">
+                    <TextBlock Text="Server ts: "/>
+                    <TextBlock Text="{Binding Summary.ServerTimestamp.Min}" FontWeight="Bold" Margin="0,0,5,0"/>
+                    <TextBlock Text=".."/>
+                    <TextBlock Text="{Binding Summary.ServerTimestamp.Max}" FontWeight="Bold" Margin="5,0,5,0"/>
+                </StackPanel>
+
+                <GroupBox Header="DataTypes" Grid.Row="3">
+                    <ItemsControl ItemsSource="{Binding Summary.DataTypes}" FontWeight="Bold"/>
+                </GroupBox>
+            </Grid>
+        </StackPanel>
+
+        <StatusBar DockPanel.Dock="Bottom" Grid.Row="2">
+            <StatusBarItem Content="{Binding Error}" Foreground="Red"/>
+        </StatusBar>
+    </Grid>
+</UserControl>

@@ -4,6 +4,7 @@ namespace OpcDomain;
 
 public static class ValueFormat
 {
+    //TODO cfg
     public const int ArrayLimith = 1;
 
     public static (string Display, string? DataType) ToDisplay(OpcTag tag)

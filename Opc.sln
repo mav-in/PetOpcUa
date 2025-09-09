@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpcDomain", "OpcDomain\OpcD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpcTests", "OpcTests\OpcTests.csproj", "{85306EB6-4014-4410-8B85-5D2B284F2A70}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpcClient", "OpcClient\OpcClient.csproj", "{DCD1B81F-8FC6-418E-9F23-4D95F5B779E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{85306EB6-4014-4410-8B85-5D2B284F2A70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85306EB6-4014-4410-8B85-5D2B284F2A70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85306EB6-4014-4410-8B85-5D2B284F2A70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCD1B81F-8FC6-418E-9F23-4D95F5B779E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCD1B81F-8FC6-418E-9F23-4D95F5B779E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCD1B81F-8FC6-418E-9F23-4D95F5B779E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCD1B81F-8FC6-418E-9F23-4D95F5B779E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
