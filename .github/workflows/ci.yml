@@ -20,3 +20,10 @@ jobs:
         run: dotnet test Opc.sln -c Release --no-build
       - name: Build Docker image
         run: docker build -t opc-api:local -f ./OpcApi/Dockerfile .
+
+  build-client:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build WPF Client
+        run: dotnet build ./OpcClient/OpcClient.csproj --configuration Release
